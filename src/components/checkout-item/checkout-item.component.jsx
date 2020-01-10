@@ -1,26 +1,36 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import './checkout-item.styles.scss';
+import { 
+    CheckoutItemContainer, 
+    CheckoutImageContainer, 
+    CheckoutImage, 
+    NameContainer, 
+    QuantityContainer, 
+    ArrowContainer, 
+    ValueContainer, 
+    PriceContainer,  
+    RemoveButtonContainer 
+} from './checkout-item.styles';
 
 import { clearItemFromCart, addItem, removeItem } from '../../redux/cart/cart.actions';
 
 const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
     const { name, imageUrl, price, quantity } = cartItem;
     return (
-        <div className='checkout-item'>
-            <div className='image-container'>
-                <img src={imageUrl} alt='item' />
-            </div>
-            <span className='name'>{name}</span>
-            <span className='quantity'>
-                <div onClick={() => removeItem(cartItem)}  className='arrow'>&#10094;</div>
-                <span className='value'>{quantity}</span>
-                <div onClick={() => addItem(cartItem)}  className='arrow'>&#10095;</div>
-            </span>
-            <span className='price'>{price}</span>
-            <div onClick={() => clearItem(cartItem)} className='remove-button'>&#10005;</div>
-        </div>
+        <CheckoutItemContainer>
+            <CheckoutImageContainer>
+                <CheckoutImage src={imageUrl} alt='item' />
+            </CheckoutImageContainer>
+            <NameContainer>{name}</NameContainer>
+            <QuantityContainer>
+                <ArrowContainer onClick={() => removeItem(cartItem)}>&#10094;</ArrowContainer>
+                <ValueContainer>{quantity}</ValueContainer>
+                <ArrowContainer onClick={() => addItem(cartItem)}>&#10095;</ArrowContainer>
+            </QuantityContainer>
+            <PriceContainer className='price'>{price}</PriceContainer>
+            <RemoveButtonContainer onClick={() => clearItem(cartItem)}>&#10005;</RemoveButtonContainer>
+        </CheckoutItemContainer>
     );
 }
 
