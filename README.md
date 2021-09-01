@@ -8,7 +8,13 @@ Web view is responsive and can be viewed on any device.
 
 images:
 Web view:
-![image]('./web-hero.png')
+
+---
+
+![image](./web-hero.png)
 
 Mobile view:
-![image]('./mobile-hero.png')
+
+---
+
+![image](./mobile-hero.png)
